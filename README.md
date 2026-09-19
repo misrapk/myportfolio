@@ -127,7 +127,70 @@ npm run lint
 ```bash
 npm run build
 ```
-The compiled, production-ready static assets will be output to the `dist/` directory.
+The compiled, production-ready static assets (including the automatically generated `Peeyush_Kant_Misra_Resume.pdf`) will be output to the `dist/` directory.
+
+---
+
+## 📄 Resume Download & Verification
+
+The portfolio includes multiple options to access and download the official resume:
+- **Direct PDF Download:** Generates and serves a clean, ATS-compliant 2-page vector PDF (`Peeyush_Kant_Misra_Resume.pdf`).
+- **Interactive Document Modal:** Allows recruiters to preview the full document in-browser, copy formatted plain text directly to their clipboard for ATS entry, or print.
+- **Access Points:** Located on the **Top Navbar**, the **Hero action buttons**, the **30-Second Recruiter Brief Modal**, and the **Footer**.
+
+---
+
+## 🌐 How to Publish to Vercel (100% Free)
+
+This project has been pre-configured with `vercel.json` for seamless zero-configuration deployment on [Vercel's Free Hobby Tier](https://vercel.com).
+
+### Method 1: Deploy via GitHub (Recommended — Continuous Deployment)
+
+1. **Push your code to GitHub:**
+   ```bash
+   git add .
+   git commit -m "Add resume download and Vercel configuration"
+   git push origin main
+   ```
+
+2. **Sign up / Log in to Vercel:**
+   - Go to [https://vercel.com/signup](https://vercel.com/signup) and choose **Continue with GitHub** (Free forever for personal portfolios).
+
+3. **Import your GitHub Repository:**
+   - Click **"Add New..."** → **"Project"**.
+   - Select your repository (e.g. `portfolio`).
+   - Vercel automatically detects the framework as **Vite** and pre-fills:
+     - **Build Command:** `npm run build`
+     - **Output Directory:** `dist`
+     - **Install Command:** `npm install`
+   - You do **not** need any environment variables for the portfolio frontend.
+
+4. **Click "Deploy":**
+   - In less than 60 seconds, your site will be deployed at a live URL such as:
+     `https://peeyush-kant-misra-portfolio.vercel.app`
+   - Every time you push changes to your `main` branch, Vercel will automatically re-build and deploy your site!
+
+5. **(Optional) Add a Free Custom Domain:**
+   - In Vercel Project Settings → **Domains**, add your custom domain (e.g., `peeyushmisra.com` or `peeyush.dev`).
+   - Vercel automatically provisions free SSL/TLS certificates and global CDN edge routing.
+
+---
+
+### Method 2: Deploy directly via Vercel CLI
+
+If you prefer deploying from your terminal without opening the web browser:
+
+1. Install the Vercel CLI (or use `npx`):
+   ```bash
+   npx vercel
+   ```
+2. Follow the terminal prompts:
+   - Log in with your email or GitHub account.
+   - Set up and deploy: press `Enter` to accept default project settings.
+3. For the production URL:
+   ```bash
+   npx vercel --prod
+   ```
 
 ---
 

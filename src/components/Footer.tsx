@@ -1,8 +1,13 @@
 import React from 'react';
-import { ArrowUp, Github, Linkedin, Youtube, Mail, Heart, Sparkles } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Youtube, Mail, Heart, Sparkles, Download } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
+import { downloadResumePDF } from '../utils/resumeDownload';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenResume?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -78,10 +83,18 @@ export const Footer: React.FC = () => {
 
         {/* Bottom copyright line */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 dark:text-slate-400 gap-3">
-          <div>
-            © {new Date().getFullYear()} Peeyush Kant Misra. All rights reserved.
+          <div className="flex items-center gap-3">
+            <span>© {new Date().getFullYear()} Peeyush Kant Misra. All rights reserved.</span>
+            <span>•</span>
+            <button
+              onClick={() => (onOpenResume ? onOpenResume() : downloadResumePDF())}
+              className="text-blue-600 dark:text-blue-400 hover:underline font-medium inline-flex items-center gap-1 cursor-pointer"
+            >
+              <Download className="w-3 h-3" />
+              <span>Download Resume (PDF)</span>
+            </button>
           </div>
-          <div className="flex items-center gap-4 text-[11px] font-mono">
+          <div className="flex items-center gap-3 text-[11px] font-mono">
             <span>Cognizant Tech Solutions</span>
             <span>•</span>
             <span>Ex-Amazon</span>

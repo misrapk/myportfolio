@@ -16,6 +16,7 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { RecruiterSnapshotModal } from './components/RecruiterSnapshotModal';
 import { InteractiveModelModal } from './components/InteractiveModelModal';
+import { ResumeModal } from './components/ResumeModal';
 
 export default function App() {
   // Dark mode state: default to dark for data science aesthetic, or user system preference
@@ -27,6 +28,7 @@ export default function App() {
 
   const [recruiterModalOpen, setRecruiterModalOpen] = useState<boolean>(false);
   const [modelModalOpen, setModelModalOpen] = useState<boolean>(false);
+  const [resumeModalOpen, setResumeModalOpen] = useState<boolean>(false);
   const [activeModelDemo, setActiveModelDemo] = useState<'heart' | 'grade' | 'fraud'>('heart');
 
   // Synchronize HTML element class with dark mode state
@@ -52,6 +54,7 @@ export default function App() {
         darkMode={darkMode}
         setDarkMode={setDarkMode}
         onOpenRecruiterSnapshot={() => setRecruiterModalOpen(true)}
+        onOpenResume={() => setResumeModalOpen(true)}
       />
 
       {/* Main Content Sections */}
@@ -60,6 +63,7 @@ export default function App() {
         <Hero
           onOpenRecruiterSnapshot={() => setRecruiterModalOpen(true)}
           onOpenModelPlayground={() => handleOpenModelDemo('heart')}
+          onOpenResume={() => setResumeModalOpen(true)}
         />
 
         {/* 2. Dedicated Project Showcase with Live Test CTAs */}
@@ -85,12 +89,22 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer onOpenResume={() => setResumeModalOpen(true)} />
 
       {/* Recruiter Quick Snapshot Modal */}
       <RecruiterSnapshotModal
         isOpen={recruiterModalOpen}
         onClose={() => setRecruiterModalOpen(false)}
+        onOpenResume={() => {
+          setRecruiterModalOpen(false);
+          setResumeModalOpen(true);
+        }}
+      />
+
+      {/* Full Resume Document Modal */}
+      <ResumeModal
+        isOpen={resumeModalOpen}
+        onClose={() => setResumeModalOpen(false)}
       />
 
       {/* Live Interactive Machine Learning Model Simulator Modal */}
